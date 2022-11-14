@@ -15,12 +15,12 @@ def new_game():
     playagain = play_again()
 
     gamelimit = 5
-    while gamelimit > 0:
-        if playagain == 'Y':
-            play_again()
-            gamelimit -= 1
-        else:
-            pass
+
+    if playagain == 'Y':
+        playagain = play_again()
+        gamelimit -= 1
+    else:
+        pass
 
 
 
