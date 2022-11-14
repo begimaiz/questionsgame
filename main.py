@@ -12,15 +12,21 @@ options = [["A. Guido van Rossum", "B. Elon Musk", "C. Bill Gates", "D. Mark Zuc
 
 
 def new_game():
-    playagain = play_again()
+    play_again()
+    gamelimit = 5
+    attmeptlimit =15
+    playagain = 'Y'
+    while gamelimit > 0 and attmeptlimit > 0 :
+        playagain = input('play again Y or N:')
+        if playagain == 'Y':
+            playagain = play_again()
+            gamelimit -= 1
+        elif playagain == 'N':
+            SystemExit
+        else:
+            print('only Y and N allowed')
+            attmeptlimit -= 1
 
-    gamelimit = 3
-
-    if playagain == 'Y' and gamelimit > 0:
-        playagain = play_again()
-        gamelimit -= 1
-    else:
-        pass
 
 
 
@@ -51,8 +57,6 @@ def play_again():
         answer = input ('enter answer only A B C and D:')
         score += check_answer(answer, rightanswer)
     display_score(score)
-    playagain = input('play again Y or N:')
-    return playagain
 
 
 
