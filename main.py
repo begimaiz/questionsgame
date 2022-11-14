@@ -1,3 +1,4 @@
+from random import randint
 questions = {
     "Who created Python?: ": "A",
     "What year was Python created?: ": "B",
@@ -44,6 +45,25 @@ def isnotacceptable(answer):
         return False
     else:
         return True
+
+def addquestion():
+    question = input('Enter new question:')
+    answer = input('Enter the right option:')
+    listofanswers = ()
+    for i in range(3):
+        listofanswers = input('Enter wrong option:')
+
+    rightindex = randint(0,3)
+    options = 'ABCD'
+
+    questions[question] = options[rightindex]
+    options = options.replace(options[rightindex],'')
+
+
+
+
+
+
 
 def play_again():
     question = ''
