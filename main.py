@@ -14,9 +14,9 @@ options = [["A. Guido van Rossum", "B. Elon Musk", "C. Bill Gates", "D. Mark Zuc
 def new_game():
     playagain = play_again()
 
-    gamelimit = 5
+    gamelimit = 3
 
-    if playagain == 'Y':
+    if playagain == 'Y' and gamelimit > 0:
         playagain = play_again()
         gamelimit -= 1
     else:
