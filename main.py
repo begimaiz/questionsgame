@@ -6,6 +6,5 @@ def display_score():
     pass
 def play_again():
     pass
-
 def main():
     pass
