@@ -22,13 +22,10 @@ def new_game():
             playagain = play_again()
             gamelimit -= 1
         elif playagain == 'N':
-            SystemExit
+            break
         else:
             print('only Y and N allowed')
             attmeptlimit -= 1
-
-
-
 
 
 def check_answer(answer, rightanswer):
@@ -42,6 +39,11 @@ def check_answer(answer, rightanswer):
 def display_score(score):
     print('the score is:', score)
 
+def isnotacceptable(answer):
+    if answer in 'ABCD':
+        return False
+    else:
+        return True
 
 def play_again():
     question = ''
@@ -54,7 +56,13 @@ def play_again():
         print(question)
         print('Options:', options[count])
         count +=1
-        answer = input ('enter answer only A B C and D:')
+
+        notacceptable = True
+        limit = 4
+        while notacceptable and limit > 0:
+            answer = input('enter answer only A B C and D:')
+            notacceptable = isnotacceptable(answer)
+            limit -= 1
         score += check_answer(answer, rightanswer)
     display_score(score)
 
