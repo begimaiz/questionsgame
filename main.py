@@ -7,8 +7,5 @@ def display_score():
 def play_again():
     pass
 
-
-
-
 def main():
     pass
