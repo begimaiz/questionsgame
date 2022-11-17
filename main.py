@@ -55,7 +55,6 @@ def addquestion():
     for i in range(3):
         listofwronganswers.append(input('Enter wrong answer:'))
 
-
     rightindex = randrange(1,3)
     print(rightindex)
     letteroptions = {0: 'A', 1: 'B', 2: 'C', 3: 'D'}
@@ -76,7 +75,7 @@ def addquestion():
     options.append(nelistofanswers)
 
     print(questions, options)
-
+    new_game()
 
 
 def play_again():
@@ -103,6 +102,10 @@ def play_again():
 
 
 def main():
-    new_game()
+    option = input ('Playe game or Add questions? enter P or A')
+    if option == 'P':
+        new_game()
+    elif option == 'A':
+        addquestion()
 
 main()
