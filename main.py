@@ -1,4 +1,5 @@
-from random import randint
+from random import randrange
+
 questions = {
     "Who created Python?: ": "A",
     "What year was Python created?: ": "B",
@@ -15,7 +16,7 @@ options = [["A. Guido van Rossum", "B. Elon Musk", "C. Bill Gates", "D. Mark Zuc
 def new_game():
     play_again()
     gamelimit = 5
-    attmeptlimit =15
+    attmeptlimit = 3
     playagain = 'Y'
     while gamelimit > 0 and attmeptlimit > 0 :
         playagain = input('play again Y or N:')
@@ -48,20 +49,33 @@ def isnotacceptable(answer):
 
 def addquestion():
     question = input('Enter new question:')
-    answer = input('Enter the right option:')
-    listofanswers = ()
+    answer = input('Enter the correct answer:')
+
+    listofwronganswers = []
     for i in range(3):
-        listofanswers = input('Enter wrong option:')
-
-    rightindex = randint(0,3)
-    options = 'ABCD'
-
-    questions[question] = options[rightindex]
-    options = options.replace(options[rightindex],'')
+        listofwronganswers.append(input('Enter wrong answer:'))
 
 
+    rightindex = randrange(1,3)
+    print(rightindex)
+    letteroptions = {0: 'A', 1: 'B', 2: 'C', 3: 'D'}
+    rightletter = letteroptions[rightindex]
+    questions[question] = rightletter
+    letteroptions[rightindex] = ' '
 
+    nelistofanswers = []
 
+    for el in letteroptions.values():
+        if el == ' ':
+            nelistofanswers.append(rightletter + '.' + answer)
+            print(rightletter)
+        else:
+            nelistofanswers.append(el + '.' + listofwronganswers.pop())
+            print(el)
+
+    options.append(nelistofanswers)
+
+    print(questions, options)
 
 
 
