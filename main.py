@@ -20,6 +20,8 @@ def new_game():
 
     while game_limit > 0 and attempt_limit > 0:
         again = input('play again Y or N:')
+        again = again.upper()
+        print()
         if again == 'Y':
             play_again()
             game_limit -= 1
@@ -27,6 +29,7 @@ def new_game():
             break
         else:
             print('only Y and N allowed')
+            print()
             attempt_limit -= 1
 
 
@@ -38,11 +41,12 @@ def check_answer(answer, right_answer):
 
 
 def display_score(score):
-    print('the score is:', score)
+    print('Your score is ', score, 'out of ', len(questions))
+    print()
 
 
 def is_not_acceptable(answer):
-    if answer in 'ABCD':
+    if answer.upper() in 'ABCD':
         return False
     else:
         return True
@@ -50,14 +54,14 @@ def is_not_acceptable(answer):
 
 def add_question():
     question = input('Enter new question:')
+    print()
     answer = input('Enter the correct answer:')
-
+    print()
     list_of_wrong_answers = []
     for i in range(3):
         list_of_wrong_answers.append(input('Enter wrong answer:'))
-
+        print()
     right_index = randrange(1, 3)
-    print(right_index)
     letter_options = {0: 'A', 1: 'B', 2: 'C', 3: 'D'}
     right_letter = letter_options[right_index]
     questions[question] = right_letter
@@ -68,14 +72,9 @@ def add_question():
     for el in letter_options.values():
         if el == ' ':
             new_list_of_answers.append(right_letter + '.' + answer)
-            print(right_letter)
         else:
             new_list_of_answers.append(el + '.' + list_of_wrong_answers.pop())
-            print(el)
-
     options.append(new_list_of_answers)
-
-    print(questions, options)
     new_game()
 
 
@@ -86,24 +85,31 @@ def play_again():
         question = el
         right_answer = questions[el]
         print(question)
-        print('Options:', options[count])
+        print()
+        for i in options[count]:
+            print(i)
+        print()
         count += 1
-
         not_acceptable = True
         limit = 4
         answer = ''
         while not_acceptable and limit > 0:
             answer = input('enter answer only A B C and D:')
+            answer = answer.upper()
+            print()
             not_acceptable = is_not_acceptable(answer)
             limit -= 1
         score += check_answer(answer, right_answer)
+
     display_score(score)
 
 
 def main():
     count = 5
     while count > 0:
-        option = input('Play game or Add questions? enter P or A')
+        option = input('Play game or Add questions? enter P or A: ')
+        option = option.upper()
+        print()
         if option == 'P':
             new_game()
             count = 0
@@ -112,7 +118,9 @@ def main():
             count = 0
         else:
             print('enter P or A only')
+            print()
             count -= 1
             continue
+
 
 main()
